@@ -1,0 +1,61 @@
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 8px;
+}
+
+.title {
+  font-size: 180%;
+  font-weight: bold;
+  color: blueviolet;
+  text-align: center;
+}
+
+.errorMsg {
+  border: 1px solid rgb(220, 38, 38);
+  color: rgb(220, 38, 38);
+  background-color: rgb(254, 242, 242);
+  margin-top: 20px;
+  padding: 10px 15px;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+.body {
+  margin-top: 15px;
+  font-size: 110%;
+}
+
+.body a {
+  color: blue;
+}
+
+.body label {
+  color: rgb(2, 132, 199);
+}
+
+.btnContainer {
+  display: flex;
+}
+
+.propsContainer {
+  margin-top: 12px;
+  display: flex;
+}
+
+.resultTitle, .resultItem {
+  border-bottom: 1px solid gainsboro;
+}
+
+.resultTitle {
+  font-weight: bold;
+  font-size: 120%;
+  margin-bottom: 8px;
+}
+
+.rawResult {
+  font-size: 90%;
+  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  font-family: monospace, 'Courier New', Courier;
+}
