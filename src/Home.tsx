@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './Home.css';
 
 function Home() {
@@ -8,7 +9,7 @@ function Home() {
         <div className="App-title">Web APIs Demo</div>
         <br />
         <div>
-          <a className="App-link" href="/contact-picker-demo">Contact Picker API Demo</a>
+          <Link className="App-link" to="/contact-picker-demo">Contact Picker API Demo</Link>
         </div>
       </header>
     </div>
