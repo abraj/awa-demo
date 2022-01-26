@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@baadal-sdk/baadal-ui';
 import styles from './contact-picker.module.css'
+import common from '../../styles/common.module.css';
 import { Link } from 'react-router-dom';
 
 const featureDetect = () => {
@@ -140,15 +141,15 @@ class ContactPickerDemo extends React.Component {
     const disabled = !selectedProps || !filterSelectedProps(selectedProps).length;
 
     return (
-      <div className={styles.container}>
-        <div className={styles.title}>Contact Picker API Demo</div>
-        <div className={styles.body}>
+      <div className={common.container}>
+        <div className={common.title}>Contact Picker API Demo</div>
+        <div className={common.body}>
           {!contactsManager && (
-            <div className={styles.errorMsg}>This browser is not supported!</div>
+            <div className={common.errorMsg}>This browser is not supported!</div>
           )}
 
           {error && (
-            <div className={styles.errorMsg}>Something went wrong! Check permissions.</div>
+            <div className={common.errorMsg}>Something went wrong! Check permissions.</div>
           )}
 
           <br />

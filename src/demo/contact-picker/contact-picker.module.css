@@ -1,39 +1,3 @@
-.container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 0 8px;
-}
-
-.title {
-  font-size: 180%;
-  font-weight: bold;
-  color: blueviolet;
-  text-align: center;
-}
-
-.errorMsg {
-  border: 1px solid rgb(220, 38, 38);
-  color: rgb(220, 38, 38);
-  background-color: rgb(254, 242, 242);
-  margin-top: 20px;
-  padding: 10px 15px;
-  border-radius: 0.5rem;
-  font-weight: bold;
-}
-
-.body {
-  margin-top: 15px;
-  font-size: 110%;
-}
-
-.body a {
-  color: blue;
-}
-
-.body label {
-  color: rgb(2, 132, 199);
-}
-
 .btnContainer {
   display: flex;
 }
