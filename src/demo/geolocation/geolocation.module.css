@@ -1,0 +1,36 @@
+.btnContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  row-gap: 8px;
+}
+
+.loaderText {
+  color: tomato;
+  font-weight: bold;
+}
+
+.locationContainer {
+  margin-bottom: 20px;
+}
+
+.mapTitle {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.mapContainer {
+  font-size: 85%;
+  color: blueviolet;
+}
+
+.mapPadding {
+  height: 8px;
+}
+
+.locationInfo {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 85%;
+  color: blueviolet;
+}

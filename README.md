@@ -33,7 +33,7 @@ The above command starts a local demo server on [http://localhost:3000](http://l
 
 ### Now
 * [Contact Picker API](https://developer.mozilla.org/en-US/docs/Web/API/Contact_Picker_API): [Demo](https://awa-demo.web.app/contact-picker-demo)
-* [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
+* [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API): [Demo](https://awa-demo.web.app/geolocation-demo)
 * [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API)
 * [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
 * [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)

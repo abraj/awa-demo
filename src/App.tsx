@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Home from './Home';
 import ContactPickerDemo from './demo/contact-picker/contact-picker';
+import GeolocationDemo from './demo/geolocation/geolocation';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="contact-picker-demo" element={<ContactPickerDemo />} />
+        <Route path="geolocation-demo" element={<GeolocationDemo />} />
       </Routes>
     </div>
   );
