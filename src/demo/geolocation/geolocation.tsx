@@ -4,6 +4,7 @@ import { Button } from '@baadal-sdk/baadal-ui';
 import styles from './geolocation.module.css'
 import common from '../../styles/common.module.css';
 import { Link } from 'react-router-dom';
+import GoogleMap from '../google-map/google-map';
 
 const featureDetect = () => {
   const supported = ('geolocation' in navigator);
@@ -204,7 +205,11 @@ class GeoLocationDemo extends React.Component<GeoLocationDemoProps, GeoLocationD
                   </div>
                   <div className={styles.mapContainer}>
                     {(latitude && longitude) && (
-                      <div>Google Map</div>
+                      <GoogleMap
+                        apiKey={''}
+                        initialCenter={{ lat: latitude, lng: longitude }}
+                        zoom={14}
+                      />
                     )}
                     <div className={styles.mapPadding} />
                     <div><span style={{ fontWeight: 'bold' }}>Coordinates:</span> {latitude}°, {longitude}°</div>
