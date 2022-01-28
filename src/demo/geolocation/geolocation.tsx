@@ -206,7 +206,7 @@ class GeoLocationDemo extends React.Component<GeoLocationDemoProps, GeoLocationD
                   <div className={styles.mapContainer}>
                     {(latitude && longitude) && (
                       <GoogleMap
-                        apiKey={''}
+                        apiKey={`${process.env.REACT_APP_GOOGLE_MAP_API_KEY}`}
                         initialCenter={{ lat: latitude, lng: longitude }}
                         zoom={14}
                       />
