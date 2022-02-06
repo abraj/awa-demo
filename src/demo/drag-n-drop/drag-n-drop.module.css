@@ -1,0 +1,75 @@
+.dragContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 130%;
+  font-weight: bold;
+}
+
+.groupTitle {
+  font-size: 105%;
+  font-weight: bold;
+  margin: 15px 0 6px;
+}
+
+.draggableItem {
+  width: 185px;
+  height: 50px;
+  background-color: rgb(125, 249, 255);
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+  cursor: move;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.draggingItem {
+  background-color: rgb(125, 249, 255, 0.5);
+}
+
+.inProgressItems {
+  width: 350px;
+  min-height: 50px;
+  background-color: #F5F5F5;
+  border: 2px dotted red;
+  padding: 10px;
+}
+
+.doneItems {
+  width: 350px;
+  min-height: 50px;
+  background-color: #F5F5F5;
+  border: 2px dotted red;
+  padding: 10px;
+}
+
+/* Ref: https://stackoverflow.com/a/18582960/1378920 */
+.activeDropRegion * {
+  pointer-events: none;
+}
+
+.inProgressItemsActive, .doneItemsActive {
+  border: 2px dashed red;
+}
+
+.bucketList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.metaText1 {
+  color: #228B22;
+  font-size: 95%;
+}
+
+.metaText2 {
+  color: red;
+  font-size: 95%;
+}
