@@ -91,3 +91,8 @@
 .lastDropGuide {
   height: 2px;
 }
+
+.formatsInfo {
+  font-size: 90%;
+  margin-bottom: 10px;
+}

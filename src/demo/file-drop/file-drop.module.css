@@ -1,0 +1,21 @@
+.preview {
+  width: 100%;
+  max-width: 350px;
+  margin-top: 5px;
+  display: flex;
+}
+
+.filePreview {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-height: 90px;
+  overflow: hidden;
+  border: 1px solid gainsboro;
+}
+
+.fileInfo {
+  font-size: 85%;
+  margin-left: 5px;
+  flex-grow: 1;
+  flex-basis: 0;
+}

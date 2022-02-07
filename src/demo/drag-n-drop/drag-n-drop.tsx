@@ -1,4 +1,5 @@
 import React from 'react';
+import FileDropComponent from '../file-drop/file-drop';
 import styles from './drag-n-drop.module.css'
 import common from '../../styles/common.module.css';
 import { Link } from 'react-router-dom';
@@ -331,6 +332,16 @@ class DragDropDemo extends React.Component<DragDropDemoProps, DragDropDemoState>
                 </div>
               </div>
             </div>            
+          </div>
+
+          <br />
+          <div>
+            <div className={styles.sectionTitle}>File Drop (using <code>react-dropzone</code>)</div>
+            <div className={styles.sectionInfo}>You can drag and drop any file from your computer in the <em>region</em> below.</div>
+            <div className={styles.formatsInfo}>
+              <div><strong>Supported Formats:</strong> <em>images(jpg,png,gif), pdf, txt</em></div>
+            </div>
+            <FileDropComponent />
           </div>
 
           <br />
