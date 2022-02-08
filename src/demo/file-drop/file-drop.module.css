@@ -19,3 +19,18 @@
   flex-grow: 1;
   flex-basis: 0;
 }
+
+.rejectedPreview {
+  font-weight: bold;
+  font-size: 85%;
+  color: rgb(220, 20, 60);
+  background-color: rgb(255,153,153, 0.1);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorItems {
+  color: red;
+}

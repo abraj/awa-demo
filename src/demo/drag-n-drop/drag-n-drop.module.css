@@ -96,3 +96,25 @@
   font-size: 90%;
   margin-bottom: 10px;
 }
+
+/* Ref: https://stackoverflow.com/a/18582960/1378920 */
+.fileDropRegion * {
+  pointer-events: none;
+}
+
+.fileDropRegion {
+  height: 70px;
+  color: rgb(189, 189, 189);
+  background-color: rgb(250, 250, 250);
+  border: 2px dashed rgb(238, 238, 238);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  transition: border .3s ease-in-out;
+}
+
+.fileDropRegionActive {
+  border-color: #00e676;
+}

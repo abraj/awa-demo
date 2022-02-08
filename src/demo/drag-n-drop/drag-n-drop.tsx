@@ -1,8 +1,14 @@
 import React from 'react';
+import bytes from 'bytes';
 import FileDropComponent from '../file-drop/file-drop';
 import styles from './drag-n-drop.module.css'
+import dstyles from '../file-drop/file-drop.module.css';
 import common from '../../styles/common.module.css';
 import { Link } from 'react-router-dom';
+
+
+const imageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+const docTypes = ['application/pdf', 'text/plain'];
 
 class DragDropDemo extends React.Component<DragDropDemoProps, DragDropDemoState> {
   state: DragDropDemoState;
@@ -35,6 +41,9 @@ class DragDropDemo extends React.Component<DragDropDemoProps, DragDropDemoState>
       draggingTaskId3: null,
       itemsY: null,
       atIndex: -1,
+      files: [],
+      rejectedFiles: [],
+      isFileDropRegionActive: false,
     };
 
     this.tasksListRef =  React.createRef<HTMLDivElement>();
@@ -193,9 +202,47 @@ class DragDropDemo extends React.Component<DragDropDemoProps, DragDropDemoState>
     this.setState({ taskItems });
 	};
 
+  onFileDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+  };
+
+  onFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    const supportedTypes = [...imageTypes, ...docTypes];
+    const acceptedFiles = droppedFiles.filter(file => supportedTypes.includes(file.type));
+    const rejectedFiles = droppedFiles.filter(file => !supportedTypes.includes(file.type));
+
+    const files = acceptedFiles.map(file => Object.assign(file, { preview: URL.createObjectURL(file) }));
+    this.setState({ files, rejectedFiles, isFileDropRegionActive: false });
+  };
+
+  onFileDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    this.setState({ isFileDropRegionActive: true });
+  };
+
+  onFileDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    this.setState({ isFileDropRegionActive: false });
+  };
+
+  cleanUpPreview = (files: MyFile[]) => {
+    files.forEach(file => URL.revokeObjectURL(file.preview));
+  };
+
+  componentDidUpdate(prevProps: DragDropDemoProps, prevState: DragDropDemoState) {
+    const { files } = prevState;
+    if (files !== this.state.files) {
+      this.cleanUpPreview(files);
+    }
+  }
+
+  componentWillUnmount() {
+    this.cleanUpPreview(this.state.files);
+  }
+
   render() {
     const { error, tasks, draggingTaskId, dropTarget1, dropTarget2, dropActive1, dropActive2 } = this.state;
     const { taskItems, draggingTaskId3, atIndex } = this.state;
+    const { files, rejectedFiles, isFileDropRegionActive } = this.state;
 
     const buckets: any = {
       inProgress: [],
@@ -263,6 +310,62 @@ class DragDropDemo extends React.Component<DragDropDemoProps, DragDropDemoState>
     const doneDropRegion = dropTarget2 ? styles.activeDropRegion : '';
     const inProgressItemsActive = dropActive1 ? styles.inProgressItemsActive : '';
     const doneItemsActive = dropActive2 ? styles.doneItemsActive : '';
+    const fileDropRegionActive = isFileDropRegionActive ? styles.fileDropRegionActive : '';
+
+    const rejectedList = rejectedFiles.map(file => {
+      const { name, type } = file;
+      let fileName = name;
+      if (name.length > 15) {
+        fileName = `${name.substr(0, 8)}....${name.substr(-6)}`
+      }
+      return (
+        <div key={name} className={dstyles.preview}>
+          <div className={dstyles.filePreview}>
+            <div className={dstyles.rejectedPreview}>
+              <span>Unsupported Format</span>
+            </div>
+          </div>
+          <div className={`${dstyles.fileInfo} ${dstyles.errorItems}`}>
+            <div><strong>File:</strong> {fileName}</div>
+            <div><strong>Type:</strong> {type}</div>
+          </div>
+        </div>
+      );
+    });
+
+    const thumbs = files.map(file => {
+      const { name, type, size, preview } = file;
+      let fileName = name;
+      if (name.length > 15) {
+        fileName = `${name.substr(0, 8)}....${name.substr(-6)}`
+      }
+      return (
+        <div key={name} className={dstyles.preview}>
+          <div className={dstyles.filePreview}>
+            {imageTypes.includes(type) ? (
+              <img
+                src={preview}
+                alt={name}
+              />
+            ) : (
+              <iframe
+                title={name}
+                src={preview}
+                frameBorder="0"
+                scrolling="no"
+                height="100%"
+                width="100%"
+              ></iframe>
+            )}
+          </div>
+          <div className={dstyles.fileInfo}>
+            <div><strong>File:</strong> {fileName}</div>
+            <div><strong>Type:</strong> {type}</div>
+            <div><strong>Size:</strong> {`${bytes(size, { unitSeparator: ' ' })}`}</div>
+          </div>
+        </div>
+      );
+    });
 
     return (
       <div className={common.container}>
@@ -336,6 +439,30 @@ class DragDropDemo extends React.Component<DragDropDemoProps, DragDropDemoState>
 
           <br />
           <div>
+            <div className={styles.sectionTitle}>File Drop (using vanilla JS)</div>
+            <div className={styles.sectionInfo}>You can drag and drop any file from your computer in the <em>region</em> below.</div>
+            <div className={styles.formatsInfo}>
+              <div><strong>Supported Formats:</strong> <em>images(jpg,png,gif), pdf, txt</em></div>
+            </div>
+            <section>
+              <div
+                className={`${styles.fileDropRegion} ${fileDropRegionActive}`}
+                onDragOver={e => this.onFileDragOver(e)}
+                onDrop={e => this.onFileDrop(e)}
+                onDragEnter={e => this.onFileDragEnter(e)}
+                onDragLeave={e => this.onFileDragLeave(e)}
+              >
+                <div>Drag and drop your files here.</div>
+              </div>
+              <aside>
+                {rejectedList}
+                {thumbs}
+              </aside>
+            </section>
+          </div>
+
+          <br />
+          <div>
             <div className={styles.sectionTitle}>File Drop (using <code>react-dropzone</code>)</div>
             <div className={styles.sectionInfo}>You can drag and drop any file from your computer in the <em>region</em> below.</div>
             <div className={styles.formatsInfo}>
@@ -373,6 +500,9 @@ export interface DragDropDemoState {
   draggingTaskId3: string | null;
   itemsY: number[] | null;
   atIndex: number;
+  files: MyFile[];
+  rejectedFiles: File[];
+  isFileDropRegionActive: boolean;
 }
 
 interface TaskItem {
@@ -386,6 +516,11 @@ interface TaskItem2 {
   taskName: string;
 }
 
+interface MyFile extends File {
+  preview: string;
+}
+
 // Ref:
 // * https://www.pluralsight.com/guides/implement-drag-drop-react-component
 // * https://www.youtube.com/watch?v=jfYWwQrtzzY
+// * https://jsbin.com/nocadakohu/edit?html,js,output
