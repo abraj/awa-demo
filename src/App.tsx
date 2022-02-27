@@ -6,6 +6,7 @@ import ContactPickerDemo from './demo/contact-picker/contact-picker';
 import GeolocationDemo from './demo/geolocation/geolocation';
 import DragDropDemo from './demo/drag-n-drop/drag-n-drop';
 import ClipboardDemo from './demo/clipboard/clipboard';
+import FullscreenDemo from './demo/fullscreen/fullscreen';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="geolocation-demo" element={<GeolocationDemo />} />
         <Route path="drag-n-drop-demo" element={<DragDropDemo />} />
         <Route path="clipboard-demo" element={<ClipboardDemo />} />
+        <Route path="fullscreen-demo" element={<FullscreenDemo />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>

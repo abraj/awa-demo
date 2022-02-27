@@ -1,0 +1,25 @@
+.itemsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.fsButtonContainer {
+  display: flex;
+  align-items: flex-end;
+}
+
+.headingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headingText {
+  font-size: 57px;
+  font-weight: bold;
+  color: tomato;
+}
+
+.hidePointer {
+  cursor: none;
+}
