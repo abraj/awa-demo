@@ -7,12 +7,14 @@ import GeolocationDemo from './demo/geolocation/geolocation';
 import DragDropDemo from './demo/drag-n-drop/drag-n-drop';
 import ClipboardDemo from './demo/clipboard/clipboard';
 import FullscreenDemo from './demo/fullscreen/fullscreen';
+import IframeComponent from './demo/iframe/iframe-page';
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="iframe-page" element={<IframeComponent />} />
         <Route path="contact-picker-demo" element={<ContactPickerDemo />} />
         <Route path="geolocation-demo" element={<GeolocationDemo />} />
         <Route path="drag-n-drop-demo" element={<DragDropDemo />} />
