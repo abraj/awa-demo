@@ -1,0 +1,15 @@
+.clipboardContainer {
+  display: flex;
+  gap: 7px;
+}
+
+.clipboardText {
+  width: 150px;
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.clipboardMessage {
+  color: tomato
+}
