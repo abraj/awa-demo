@@ -1,0 +1,17 @@
+.status_default {
+  color: tomato;
+}
+
+.status_granted {
+  color: green;
+}
+
+.status_denied {
+  color: red;
+}
+
+.newNotifForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
